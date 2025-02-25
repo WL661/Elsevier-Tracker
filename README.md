@@ -1,4 +1,4 @@
-# 📌 Elsevier Tracker
+# 📌 Elsevier Tracker Chrome Plugins
 
 **Version:** 1.0  
 **Description:** *Helps users track the latest status and details of their submissions.*
@@ -17,8 +17,7 @@
 ## 📦 Installation
 
 ```sh
-git clone https://github.com/your-username/Elsevier-tracker.git
-cd Elsevier-tracker
+Download the plugin and install it to your Chrome.
 ```
 
 ## 🛠 Usage
