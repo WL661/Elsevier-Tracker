@@ -49,6 +49,7 @@ Simply include the script in your project, and it will fetch and display submiss
 
 **UI Preview:**  
 A floating review status panel will be displayed on the page, allowing users to monitor their submission progress easily.
+
 ![Additional UI Screenshot](https://github.com/WL661/Elsevier-Tracker/blob/main/previews2.png)
 
 ---
