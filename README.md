@@ -52,6 +52,19 @@ A floating review status panel will be displayed on the page, allowing users to 
 
 ![Additional UI Screenshot](https://github.com/WL661/Elsevier-Tracker/blob/main/previews.png)
 
+---
+
+💖 Support My Project
+If you find this plugin useful, you can support my work by making a donation. Your support helps maintain and improve this tool.
+
+🎁 Ways to Support:
+WeChat Pay: Scan the QR code below to make a donation.
+Sharing & Feedback: Share this plugin with others and provide feedback to help improve it.
+WeChat Pay QR Code:
+![Additional UI Screenshot](https://github.com/WL661/Elsevier-Tracker/blob/main/WxPay.jpg)
+
+Every bit of support is greatly appreciated! Thank you! 😊
+
 
 ---
 
