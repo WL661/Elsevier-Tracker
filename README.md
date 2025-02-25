@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/86432219-eff9-46dd-979f-62c3dcf3934b)
+
 [![English](https://img.shields.io/badge/Language-English-blue)](#english-description)
 
 # Elsevier Tracker Chrome Plugins  
