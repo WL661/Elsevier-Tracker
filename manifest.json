@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Elsevier tracker",
+  "version": "1.0",
+  "description": "Helps users track the latest status and details of their submissions.",
+  "host_permissions": [
+    "https://tnlkuelk67.execute-api.us-east-1.amazonaws.com/*",
+    "*://track.authorhub.elsevier.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://track.authorhub.elsevier.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+   "16": "extension_icon16.png",
+   "32": "extension_icon32.png",
+   "48": "extension_icon48.png",
+   "128": "extension_icon128.png"
+ }
+}
