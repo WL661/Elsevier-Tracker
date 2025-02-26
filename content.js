@@ -25,7 +25,7 @@ function displayReviewStatus(data) {
     position: fixed;
     top: 60px;
     right: 10px;
-    width: 25vw;      /* 视口宽度的25%，即1/4屏幕 */
+    width: 35vw;      /* 视口宽度*/
     min-width: 480px; /* 最小宽度480px */
     background-color: #f8f9fa;
     border: 1px solid #ccc;
@@ -59,6 +59,8 @@ function displayReviewStatus(data) {
     list-style: none;
     margin-bottom: 10px;
   `;
+
+  // 需要在顶部展示的字段
   const fields = [
     'ManuscriptTitle',
     'JournalName',
@@ -66,14 +68,16 @@ function displayReviewStatus(data) {
     'SubmissionDate',
     'LatestRevisionNumber'
   ];
+
   fields.forEach(field => {
     if (data[field] !== undefined) {
       const li = document.createElement('li');
       li.style.marginBottom = '5px';
       let value = data[field];
+      // 将 SubmissionDate 和 LastUpdated 等时间字段精确到秒
       if (field === 'SubmissionDate' || field === 'LastUpdated') {
         const date = new Date(value * 1000);
-        value = date.toLocaleString();
+        value = formatDateTime(date); // 使用自定义时间格式化函数
       }
       li.textContent = `${field}: ${value}`;
       infoList.appendChild(li);
@@ -103,6 +107,7 @@ function displayReviewStatus(data) {
   `;
   container.appendChild(revisionHeader);
 
+  // 收集 reviewer 各事件时间
   const reviewersMap = {};
   currentRevisionEvents.forEach(event => {
     const rId = event.Id;
@@ -129,13 +134,23 @@ function displayReviewStatus(data) {
     }
   });
 
-  function formatDate(dateObj) {
+  /**
+   * 自定义格式化时间到秒
+   */
+  function formatDateTime(dateObj) {
     if (!dateObj) return '';
     const y = dateObj.getFullYear();
     const m = String(dateObj.getMonth() + 1).padStart(2, '0');
     const d = String(dateObj.getDate()).padStart(2, '0');
-    return `${y}/${m}/${d}`;
+    const hh = String(dateObj.getHours()).padStart(2, '0');
+    const mm = String(dateObj.getMinutes()).padStart(2, '0');
+    const ss = String(dateObj.getSeconds()).padStart(2, '0');
+    return `${y}/${m}/${d} ${hh}:${mm}:${ss}`;
   }
+
+  /**
+   * 计算两个日期间的天数差
+   */
   function diffInDays(d1, d2) {
     if (!d1 || !d2) return '';
     const msInOneDay = 24 * 60 * 60 * 1000;
@@ -160,6 +175,8 @@ function displayReviewStatus(data) {
     } else if (completedDate) {
       status = 'Completed';
     }
+
+    // 卡片样式
     const card = document.createElement('div');
     card.style.cssText = `
       background-color: #fff;
@@ -172,6 +189,8 @@ function displayReviewStatus(data) {
       align-items: center;
       justify-content: space-between; 
     `;
+
+    // 左侧
     const leftCol = document.createElement('div');
     leftCol.style.cssText = `
       display: flex;
@@ -187,18 +206,24 @@ function displayReviewStatus(data) {
       margin-bottom: 8px;
     `;
     leftCol.appendChild(reviewerTitle);
+
     const invitedLine = document.createElement('div');
-    invitedLine.textContent = `Invited: ${formatDate(invitedDate)}`;
+    invitedLine.textContent = `Invited: ${formatDateTime(invitedDate)}`;
     invitedLine.style.marginBottom = '4px';
     leftCol.appendChild(invitedLine);
+
     const acceptedLine = document.createElement('div');
-    acceptedLine.textContent = `Accepted: ${formatDate(acceptedDate)}`;
+    acceptedLine.textContent = `Accepted: ${formatDateTime(acceptedDate)}`;
     acceptedLine.style.marginBottom = '4px';
     leftCol.appendChild(acceptedLine);
+
     const completedLine = document.createElement('div');
-    completedLine.textContent = `Completed: ${formatDate(completedDate)}`;
+    completedLine.textContent = `Completed: ${formatDateTime(completedDate)}`;
     leftCol.appendChild(completedLine);
+
     card.appendChild(leftCol);
+
+    // 中列1
     const middleCol1 = document.createElement('div');
     middleCol1.style.cssText = `
       text-align: center;
@@ -216,6 +241,8 @@ function displayReviewStatus(data) {
     `;
     middleCol1.appendChild(responseValue);
     card.appendChild(middleCol1);
+
+    // 中列2
     const middleCol2 = document.createElement('div');
     middleCol2.style.cssText = `
       text-align: center;
@@ -237,6 +264,8 @@ function displayReviewStatus(data) {
     `;
     middleCol2.appendChild(reviewValue);
     card.appendChild(middleCol2);
+
+    // 右侧
     const rightCol = document.createElement('div');
     rightCol.style.cssText = `
       text-align: right;
@@ -246,6 +275,7 @@ function displayReviewStatus(data) {
     statusLabel.textContent = 'Status';
     statusLabel.style.cssText = 'color: #6c757d; margin-bottom: 6px; font-size: 13px;';
     rightCol.appendChild(statusLabel);
+
     const statusValue = document.createElement('div');
     statusValue.textContent = status;
     if (status === 'Completed') {
@@ -261,12 +291,15 @@ function displayReviewStatus(data) {
     `;
     rightCol.appendChild(statusValue);
     card.appendChild(rightCol);
+
     container.appendChild(card);
   });
+
   document.body.appendChild(container);
   createToggleButton(container);
 }
 
+// 显示/隐藏按钮
 function createToggleButton(container) {
   const toggleButton = document.createElement('button');
   toggleButton.id = 'toggle-button';
@@ -293,6 +326,7 @@ function createToggleButton(container) {
     toggleButton.style.backgroundColor = '#007BFF';
   });
   document.body.appendChild(toggleButton);
+
   toggleButton.addEventListener('click', () => {
     container.style.display = (container.style.display === 'none') ? 'block' : 'none';
   });
