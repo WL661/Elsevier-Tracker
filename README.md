@@ -7,6 +7,7 @@
 [![IEEE](https://img.shields.io/badge/IEEE-Coming%20Soon-blue)](#)
 [![Springer](https://img.shields.io/badge/Springer-Coming%20Soon-blue)](#)
 [![Wiley](https://img.shields.io/badge/Wiley-Coming%20Soon-blue)](#)
+
 **Version: 1.0**  
 **Description:** Helps users track the latest status and details of their submissions.
 
