@@ -9,7 +9,7 @@
 
 ## 🚀 Overview
 
-### English Description {#english-description}
+### Description {#description}
 Elsevier Tracker is a simple yet powerful tool designed to help authors track the latest status and updates of their manuscript submissions to Elsevier journals. This tool fetches real-time review progress and displays key submission details in a user-friendly interface.  
 [Back to Top](#elsevier-tracker-chrome-plugins)
 
