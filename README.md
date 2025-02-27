@@ -47,8 +47,8 @@
   ## 🛠 Usage
   
   **Usage:**  
-  Simply include the script in your project, and it will fetch and display submission details based on the provided uuid.
-  
+ Simply open the tracking page with the UUID and it will be displayed automatically.
+ Like this URL: https://track.authorhub.elsevier.com/?uuid=<span style="color: red; font-weight: bold;">yourUUID</span>
   ---
   
   ## 🎨 UI Preview
